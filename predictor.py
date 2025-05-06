@@ -31,13 +31,21 @@ alb = st.number_input("haemoglobin：",min_value=-10.0,max_value=1000.0,value=35
 
 feature_values = [ua,age,ldh,gfe,d_dimer,ca,hs_cTnl,hgb,alb]
 features =np.array([feature_values])
-if st.button("Predict"):
-    predicted_class = model.predict(features)[0]
-    predicted_proba = model.predict_proba(features)[1]
 
+if st.button("Predict"):
+    features = np.array([feature_values])
+    
+    # 预测结果
+    predicted_class = model.predict(features)[0]          # 获取预测类别
+    proba_array = model.predict_proba(features)           # 获取概率矩阵
+    
+    # 提取具体概率值
+    prob_class_0 = proba_array[0][0].round(3)            # 保留3位小数
+    prob_class_1 = proba_array[0][1].round(3)
+    
     st.write(f"**Predicted Class:**{predicted_class}(1:yes,0:no)")
-    st.write(f"- Low risk probability: {predicted_proba[0]:.1%}")
-    st.write(f"- High risk probability: {predicted_proba[1]:.1%}")
+    st.write(f"- Low risk probability: {proba_class_0:.1%}")
+    st.write(f"- High risk probability: {proba_class_1:.1%}")
     st.write(f"**Predicted Probabilities:**{predicted_proba}")
     if predicted_class == 1:
         advice = (
