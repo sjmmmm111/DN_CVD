@@ -37,26 +37,23 @@ if st.button("Predict"):
     
     # 预测结果
     predicted_class = model.predict(features)[0]          # 获取预测类别
-    proba_array = model.predict_proba(features)           # 获取概率矩阵
+    predicted_proba = model.predict_proba(features)[0]          # 获取概率矩阵
     
-    # 提取具体概率值
-    prob_class_0 = proba_array[0][0].round(3)            # 保留3位小数
-    prob_class_1 = proba_array[0][1].round(3)
+    
     
     st.write(f"**Predicted Class:**{predicted_class}(1:yes,0:no)")
-    st.write(f"- Low risk probability: {proba_class_0:.1%}")
-    st.write(f"- High risk probability: {proba_class_1:.1%}")
     st.write(f"**Predicted Probabilities:**{predicted_proba}")
+    probability = predicted_proba[prodicted_class]*100
     if predicted_class == 1:
         advice = (
             f"According to our model, you have a high risk of heart disease."
-            f"The model predicts that your probability of having heart disease is {predicted_proba[1]:.1%}%"
+            f"The model predicts that your probability of having heart disease is {probability:.1%}%"
             "It's adviced to consult with your healthcare provider for further evaluation and possible intervention"
         )
     else:
         advice = (
             f"According to our model, you have a low risk of heart disease."
-            f"The model predicts that your probability of not having heart disease is {predicted_proba[0]:.1%}%"
+            f"The model predicts that your probability of not having heart disease is {probability:.1%}%"
             "However, Don't take your physical health lightly.Please continue regular check-ups with your healthcare provider"
         )
     st.write(advice)
