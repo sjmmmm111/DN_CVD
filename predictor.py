@@ -25,7 +25,7 @@ ldh = st.number_input("Lactate dehydrogenase：",min_value=-10,max_value=1000,va
 gfe = st.number_input("Glomerular filtration rate：",min_value=-10,max_value=1000,value=45)
 d_dimer = st.number_input("D-Dimer：",min_value=-1.0,max_value=10.0,value=1.03)
 ca = st.number_input("Blood calcium：",min_value=-1.00,max_value=10.00,value=2.53)
-hs_cTnl = st.number_input("Hypersensitive troponin I：",min_value=-10.0,max_value=1000.0,value=20.7)
+hs_cTnl = st.number_input("Hypersensitive troponin I：",min_value=-10.0,max_value=1000.0,value=7.7)
 hgb = st.number_input("haemoglobin：",min_value=-10,max_value=1000,value=103)
 alb = st.number_input("haemoglobin：",min_value=-10.0,max_value=1000.0,value=35.8)
 
