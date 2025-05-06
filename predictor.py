@@ -43,7 +43,7 @@ if st.button("Predict"):
     
     st.write(f"**Predicted Class:**{predicted_class}(1:yes,0:no)")
     st.write(f"**Predicted Probabilities:**{predicted_proba}")
-    probability = predicted_proba[prodicted_class]*100
+    probability = predicted_proba[predicted_class]*100
     if predicted_class == 1:
         advice = (
             f"According to our model, you have a high risk of heart disease."
