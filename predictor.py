@@ -33,25 +33,25 @@ feature_values = [ua,age,ldh,gfe,d_dimer,ca,hs_cTnl,hgb,alb]
 features =np.array([feature_values])
 if st.button("Predict"):
     predicted_class = model.predict(features)[0]
-    predicted_proba = model.predict_probe(features)[1]
+    predicted_proba = model.predict_proba(features)[1]
 
     st.write(f"**Predicted Class:**{predicted_class}(1:yes,0:no)")
+    st.write(f"- Low risk probability: {predicted_proba[0]:.1%}")
+    st.write(f"- High risk probability: {predicted_proba[1]:.1%}")
     st.write(f"**Predicted Probabilities:**{predicted_proba}")
-    probability = predicted_proba[predicted_class]*100
     if predicted_class == 1:
         advice = (
             f"According to our model, you have a high risk of heart disease."
-            f"The model predicts that your probability of having heart disease is {probability:1f}%"
+            f"The model predicts that your probability of having heart disease is {predicted_proba[1]:.1%}%"
             "It's adviced to consult with your healthcare provider for further evaluation and possible intervention"
         )
     else:
         advice = (
             f"According to our model, you have a low risk of heart disease."
-            f"The model predicts that your probability of not having heart disease is {probability:1f}%"
+            f"The model predicts that your probability of not having heart disease is {predicted_proba[0]:.1%}%"
             "However, Don't take your physical health lightly.Please continue regular check-ups with your healthcare provider"
         )
     st.write(advice)
-
 
     st.subheader("SHAP Force plot Explanation")
     explainer_shap = shap.TreeExplainer(model)
