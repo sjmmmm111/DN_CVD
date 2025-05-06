@@ -41,7 +41,7 @@ if st.button("Predict"):
     
     
     
-    st.write(f"**Predicted Class:**{predicted_class}(1:yes,0:no)")
+    st.write(f"**Predicted Class:**{predicted_class}(0:low risk,1:high risk)")
     st.write(f"**Predicted Probabilities:**{predicted_proba}")
     probability = predicted_proba[predicted_class]
     if predicted_class == 1:
