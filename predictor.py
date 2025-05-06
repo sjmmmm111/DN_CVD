@@ -43,17 +43,17 @@ if st.button("Predict"):
     
     st.write(f"**Predicted Class:**{predicted_class}(1:yes,0:no)")
     st.write(f"**Predicted Probabilities:**{predicted_proba}")
-    probability = predicted_proba[predicted_class]*100
+    probability = predicted_proba[predicted_class]
     if predicted_class == 1:
         advice = (
             f"According to our model, you have a high risk of heart disease."
-            f"The model predicts that your probability of having heart disease is {probability:.1%}%"
+            f"The model predicts that your probability of having heart disease is {probability:.1%}"
             "It's adviced to consult with your healthcare provider for further evaluation and possible intervention"
         )
     else:
         advice = (
             f"According to our model, you have a low risk of heart disease."
-            f"The model predicts that your probability of not having heart disease is {probability:.1%}%"
+            f"The model predicts that your probability of not having heart disease is {probability:.1%}"
             "However, Don't take your physical health lightly.Please continue regular check-ups with your healthcare provider"
         )
     st.write(advice)
@@ -67,7 +67,7 @@ if st.button("Predict"):
     else:
         shap.force_plot(explainer_shap.expected_value[0], shap_values[:, :,0],pd.DataFrame([feature_values],columns=feature_names),matplotlib=True)
     plt.savefig("shap_force_plot.png",bbox_inches ='tight',dpi=1200)
-    st.iamge("shap_force_plot.png",caption='SHAP Force Plot Explanation')
+    st.image("shap_force_plot.png",caption='SHAP Force Plot Explanation')
 
     #st.subheader("LIME Explanation")
     #lime_explainer = LimeTabularExplainer(
