@@ -47,14 +47,14 @@ if st.button("Predict"):
     if predicted_class == 1:
         advice = (
             f"According to our model, you have a high risk of heart disease.     "
-            f"The model predicts that your probability of having heart disease is {probability:.1%}     "
-            "It's adviced to consult with your healthcare provider for further evaluation and possible intervention"
+            f"The model predicts that your probability of having heart disease is {probability:.1%}.     "
+            "It's adviced to consult with your healthcare provider for further evaluation and possible intervention."
         )
     else:
         advice = (
             f"According to our model, you have a low risk of heart disease.     "
-            f"The model predicts that your probability of not having heart disease is {probability:.1%}     "
-            "However, Don't take your physical health lightly.Please continue regular check-ups with your healthcare provider"
+            f"The model predicts that your probability of not having heart disease is {probability:.1%}.     "
+            "However, Don't take your physical health lightly.Please continue regular check-ups with your healthcare provider."
         )
     st.write(advice)
 
