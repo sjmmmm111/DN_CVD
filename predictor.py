@@ -27,7 +27,7 @@ d_dimer = st.number_input("D-Dimer：",min_value=-1.0,max_value=10.0,value=1.03)
 ca = st.number_input("Blood calcium：",min_value=-1.00,max_value=10.00,value=2.53)
 hs_cTnl = st.number_input("Hypersensitive troponin I：",min_value=-10.0,max_value=1000.0,value=7.7)
 hgb = st.number_input("haemoglobin：",min_value=-10,max_value=1000,value=103)
-alb = st.number_input("haemoglobin：",min_value=-10.0,max_value=1000.0,value=35.8)
+alb = st.number_input("Serum Albumin：",min_value=-10.0,max_value=1000.0,value=35.8)
 
 feature_values = [ua,age,ldh,gfe,d_dimer,ca,hs_cTnl,hgb,alb]
 features =np.array([feature_values])
@@ -46,14 +46,14 @@ if st.button("Predict"):
     probability = predicted_proba[predicted_class]
     if predicted_class == 1:
         advice = (
-            f"According to our model, you have a high risk of heart disease."
-            f"The model predicts that your probability of having heart disease is {probability:.1%}"
+            f"According to our model, you have a high risk of heart disease.     "
+            f"The model predicts that your probability of having heart disease is {probability:.1%}     "
             "It's adviced to consult with your healthcare provider for further evaluation and possible intervention"
         )
     else:
         advice = (
-            f"According to our model, you have a low risk of heart disease."
-            f"The model predicts that your probability of not having heart disease is {probability:.1%}"
+            f"According to our model, you have a low risk of heart disease.     "
+            f"The model predicts that your probability of not having heart disease is {probability:.1%}     "
             "However, Don't take your physical health lightly.Please continue regular check-ups with your healthcare provider"
         )
     st.write(advice)
